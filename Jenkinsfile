@@ -2,7 +2,7 @@ node('master'){
 
     stage 'Checkout'
     
-    git url:'https://github.com/sindhunikhita/Assign.git'
+    git url:'https://github.com/sindhunikhita/pipelinejobs.git'
     
      
 
