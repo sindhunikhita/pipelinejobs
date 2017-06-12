@@ -14,7 +14,7 @@ node('master'){
     stage 'Build'
 
 
-    sh "${mvnHome}/bin/mvn clean package"
+    sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean test"
     step([$class: 'JUnitResultArchiver', testResults:'**/target/surefire-reports/TEST-*.xml'])
 }
 
