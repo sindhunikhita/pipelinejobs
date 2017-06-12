@@ -15,6 +15,6 @@ node('master'){
 
 
     sh "${mvnHome}/bin/mvn clean package"
-    step([$class: 'JUnitResultArchiver', testResults:'**/target/**/TEST*.xml'])
+    step([$class: 'JUnitResultArchiver', testResults:'**/target/surefire-reports/TEST-*.xml'])
 }
 
