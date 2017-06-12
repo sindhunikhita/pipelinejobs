@@ -1,4 +1,5 @@
-node('master'){
+node{
+agent('slave1'){
 
     stage 'Checkout'
     
@@ -18,3 +19,4 @@ node('master'){
     step([$class: 'JUnitResultArchiver', testResults:'**/target/surefire-reports/TEST-*.xml'])
 }
 
+}
