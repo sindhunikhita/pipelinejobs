@@ -22,7 +22,7 @@ node('slave1'){
 
     puppet.credentials 'pe-access-token'
     
-    production_app_node = puppet.query 'inventory[certname] {hostname= "nikky" and environment= "production" }'
+    puppet.job 'production',query: 'inventory[certname] {hostname= "nikky" and facts.os.name='Debian' }'
 
 
 
