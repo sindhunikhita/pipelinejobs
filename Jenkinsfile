@@ -16,6 +16,17 @@ node('slave1'){
 
     sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package"
     step([$class: 'JUnitResultArchiver', testResults:'**/target/surefire-reports/TEST-*.xml'])
+
+
+    stage 'Deploy to prod'
+
+    puppet.credentials 'pe-access-token'
+    
+    production_app_node = puppet.query 'inventory[certname] {hostname= "nikky" and environment= "production" }'
+
+
+
+
 }
 
 
