@@ -18,14 +18,12 @@ node('slave1'){
     step([$class: 'JUnitResultArchiver', testResults:'**/target/surefire-reports/TEST-*.xml'])
 
 
-    stage 'Deploy to prod'
+    stage('Deploy to prod'){
 
     puppet.credentials 'pe-access-token'
     
     puppet.job 'production',query: 'inventory[certname] {hostname= "nikky" and facts.os.name='Debian' }'
-
-
-
+}
 
 }
 
