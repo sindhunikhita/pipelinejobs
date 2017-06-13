@@ -22,7 +22,7 @@ node('slave1'){
 
     stage('Deploy to prod'){
 
-    //app_nodes = puppet.query 'inventory[certname] {hostname= "nikky" and facts.os.name="Debian" and environment="production"}'
+    app_nodes = puppet.query 'inventory[certname] {hostname= "nikky" and facts.os.name="Debian" and environment="production"}'
 }
 
 }
