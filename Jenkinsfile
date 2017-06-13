@@ -22,7 +22,13 @@ node('slave1'){
     stage('Deploy to prod'){
 
     app_nodes = puppet.query 'inventory[certname] {facts.operatingsystem = "Debian"}' //{hostname= "nikky"}' //and facts.os.name= "Debian" and environment="production"}'
-}
+    certnames= []
+    for (Map node: app_nodes) {
+    	certnames.add(node.certname)
+    	}
+    }
+    //phase_groups = certname.collate(10)
+    
 
 }
 
