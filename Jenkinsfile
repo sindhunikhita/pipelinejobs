@@ -14,14 +14,14 @@ node('slave1'){
     stage 'Build'
 
 
-    sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package"
-    step([$class: 'JUnitResultArchiver', testResults:'**/target/surefire-reports/TEST-*.xml'])
+    //sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package"
+    //step([$class: 'JUnitResultArchiver', testResults:'**/target/surefire-reports/TEST-*.xml'])
 
     puppet.credentials '4716fd98-07da-432b-96af-18562120d300' 
 
     stage('Deploy to prod'){
 
-    app_nodes = puppet.query 'inventory[certname] {hostname= "nikky"} //and facts.os.name= "Debian" and environment="production"}'
+    app_nodes = puppet.query 'inventory[certname] {hostname= "nikky"}' //and facts.os.name= "Debian" and environment="production"}'
 }
 
 }
